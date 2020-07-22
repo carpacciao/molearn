@@ -1,66 +1,72 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
+  <v-app>
+    <!-- <v-navigation-drawer v-model="drawer" app>
+      <v-list nav>
+        <v-list-item-group v-model="item" color="primary">
+          <v-list-item v-for="(item, i) in drawerItems" :key="i" color="primary" link :to="item.to" @click="drawer = false">
+            <v-list-item-icon>
+              <v-icon>{{item.icon}}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{item.title}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
-    </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block>Logout</v-btn>
+        </div>
+      </template>
+    </v-navigation-drawer> -->
+
+    <v-app-bar color="primary" hide-on-scroll app dark>
+      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
+
+      <v-toolbar-title>
+        <span style="display: inline-block; background: white; height: 32px; width: 32px; border-radius: 50%;" class="mr-2 text-center primary--text">M</span>
+        <span>Molearn</span>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-bell</v-icon>
       </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+
+
+      <v-menu left bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-bind="attrs" v-on="on">
+              <v-avatar size="32" color="green">
+                l
+              </v-avatar>
+            </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <template v-slot:extension>
+        <v-tabs v-model="tabs" fixed-tabs>
+          <v-tabs-slider></v-tabs-slider>
+            <v-tab v-for="item in drawerItems" :key="item.title" :to="item.to">
+              <!-- <v-icon>{{item.icon}}</v-icon> -->
+              {{item.title}}
+            </v-tab>
+        </v-tabs>
+      </template>      
+
     </v-app-bar>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2019</span>
-    </v-footer>
+    <v-main>
+      <nuxt />
+    </v-main>
   </v-app>
 </template>
 
@@ -68,26 +74,27 @@
 export default {
   data() {
     return {
-      clipped: false,
+      tabs: null,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       drawer: false,
-      fixed: false,
-      items: [
+      drawerItems: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'mdi-view-dashboard',
+          title: 'Dashboard',
+          to: '/dashboard'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
+          icon: 'mdi-book',
+          title: 'Cours',
+          to: '/cursus'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Something',
+          to: '/dasbhoard'
+        },
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
     }
-  }
+  },
 }
 </script>
