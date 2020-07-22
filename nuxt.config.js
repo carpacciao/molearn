@@ -18,7 +18,16 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // LARABERG
+      { rel: 'stylesheet', type: 'text/css', href: '/vendor/laraberg/css/laraberg.css' }
+    ],
+    script: [
+      { src: 'https://unpkg.com/react@16.8.6/umd/react.production.min.js' },
+      { src: 'https://unpkg.com/react-dom@16.8.6/umd/react-dom.production.min.js' },
+      { src: '/vendor/laraberg/js/laraberg.js' },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -37,7 +46,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify'
   ],
   /*

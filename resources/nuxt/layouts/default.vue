@@ -90,8 +90,8 @@ export default {
         },
         {
           icon: 'mdi-apps',
-          title: 'Something',
-          to: '/dasbhoard'
+          title: 'Larabeurk',
+          to: '/laraberg'
         },
       ],
     }
