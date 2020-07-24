@@ -21,13 +21,13 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       // LARABERG
-      { rel: 'stylesheet', type: 'text/css', href: '/vendor/laraberg/css/laraberg.css' }
+      // { rel: 'stylesheet', type: 'text/css', href: '/vendor/laraberg/css/laraberg.css' }
     ],
-    script: [
-      { src: 'https://unpkg.com/react@16.8.6/umd/react.production.min.js' },
-      { src: 'https://unpkg.com/react-dom@16.8.6/umd/react-dom.production.min.js' },
-      { src: '/vendor/laraberg/js/laraberg.js' },
-    ],
+    // script: [
+    //   { src: 'https://unpkg.com/react@16.8.6/umd/react.production.min.js' },
+    //   { src: 'https://unpkg.com/react-dom@16.8.6/umd/react-dom.production.min.js' },
+    //   { src: '/vendor/laraberg/js/laraberg.js' },
+    // ],
   },
   /*
    ** Customize the progress-bar color
@@ -55,7 +55,8 @@ export default {
   modules: [
     'nuxt-laravel',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/svg',
   ],
   /*
    ** Axios module configuration
