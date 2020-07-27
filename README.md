@@ -1,4 +1,17 @@
-# Nuxt Laravel Starter
+# Lancement
+Oubliez pas de copier le .env et de le modifier avec vos données de la BDD
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+pour lancer le serveur dev. Ca compile le app.js, nuxt et lance le serveur laravel sur le port:3000
+```bash
+npm run dev
+```
+
+
+## Nuxt Laravel Starter
 
 Laravel framework with integrated NuxtJs support, preconfigured for eslint, jest and vuetify.
 
